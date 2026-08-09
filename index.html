@@ -24,30 +24,34 @@
             background-color: var(--light);
             color: var(--dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
-        /* Full page fixed background watermark */
-body::before {
-    content: "";
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px;             /* Size of central logo watermark */
-    height: 600px;
-    background-image: url('./image/logo.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    opacity: 0.05;            /* Ultra-light transparency */
-    pointer-events: none;
-    z-index: 0;
-}
 
-/* Ensure white cards sit cleanly on top */
-.card, .contact-container, .contact-form, .video-container {
-    position: relative;
-    z-index: 2;
-}
+        /* Full page fixed background watermark */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80vw;
+            max-width: 600px;
+            height: 80vw;
+            max-height: 600px;
+            background-image: url('./image/logo.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Ensure white cards sit cleanly on top */
+        .card, .contact-container, .contact-form, .video-container {
+            position: relative;
+            z-index: 2;
+        }
 
         header {
             background-color: var(--primary);
@@ -56,31 +60,39 @@ body::before {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
         .logo {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem; /* Space between logo image and text */
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #fff;
-    text-decoration: none;
-}
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
 
-.logo img {
-    height: 40px; /* Adjust height as needed */
-    width: auto;  /* Maintains image aspect ratio */
-    object-fit: contain;
-}
+        .logo img {
+            height: 38px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.2rem;
+        }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin-left: 1.5rem;
+            font-size: 0.95rem;
             transition: color 0.3s;
         }
 
@@ -93,29 +105,33 @@ body::before {
                         url('./image/photo1.jpg') center/cover no-repeat;
             color: white;
             text-align: center;
-            padding: 6rem 1rem;
+            padding: 4rem 1.25rem;
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: clamp(1.8rem, 5vw, 3rem);
             margin-bottom: 1rem;
+            line-height: 1.2;
         }
 
         .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            margin-bottom: 1.8rem;
         }
 
         .btn {
             background-color: var(--secondary);
             color: white;
-            padding: 0.75rem 1.5rem;
+            padding: 0.85rem 1.75rem;
             border: none;
             border-radius: 4px;
             font-weight: bold;
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
+            font-size: 1rem;
+            text-align: center;
+            transition: background-color 0.3s;
         }
 
         .btn:hover {
@@ -123,27 +139,27 @@ body::before {
         }
 
         .section {
-            padding: 4rem 5%;
+            padding: 3rem 5%;
             max-width: 1200px;
             margin: 0 auto;
         }
-       
 
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             color: var(--primary);
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
         }
 
         .card {
             background: white;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             border-top: 4px solid var(--secondary);
@@ -151,14 +167,15 @@ body::before {
 
         .card h3 {
             color: var(--primary);
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.2rem;
         }
 
         /* Gallery Grid */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
         }
 
         .gallery-item {
@@ -184,7 +201,7 @@ body::before {
             max-width: 900px;
             margin: 0 auto;
             background: white;
-            padding: 1.5rem;
+            padding: 1rem;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             text-align: center;
@@ -212,13 +229,13 @@ body::before {
         /* Contact Details & Map */
         .contact-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             background: white;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
         }
 
         .contact-info h3 {
@@ -228,12 +245,13 @@ body::before {
 
         .contact-info p {
             margin-bottom: 1rem;
-            font-size: 1.1rem;
+            font-size: 1rem;
+            word-wrap: break-word;
         }
 
         .map-responsive {
             overflow: hidden;
-            padding-bottom: 56.25%;
+            padding-bottom: 65%;
             position: relative;
             height: 0;
             border-radius: 8px;
@@ -250,7 +268,7 @@ body::before {
 
         .contact-form {
             background: white;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             max-width: 800px;
@@ -274,14 +292,46 @@ body::before {
             padding: 0.75rem;
             border: 1px solid #ccc;
             border-radius: 4px;
+            font-size: 1rem;
         }
 
         footer {
             background-color: var(--dark);
             color: white;
             text-align: center;
-            padding: 2rem;
+            padding: 1.5rem 1rem;
             margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Small screen adjustments */
+        @media (max-width: 600px) {
+            header {
+                justify-content: center;
+                text-align: center;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 0.6rem 1rem;
+            }
+
+            .section {
+                padding: 2.5rem 4%;
+            }
+
+            .card, .contact-form, .contact-container, .video-container {
+                padding: 1.25rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 0.75rem;
+            }
+
+            .gallery-item {
+                height: 150px;
+            }
         }
     </style>
 </head>
@@ -289,9 +339,9 @@ body::before {
 
     <header>
         <a href="#" class="logo">
-        <img src="./image/logo.png" alt="Shanmugha Sawmill Logo">
-        <span>SHANMUGHA SAWMILL</span>
-    </a>
+            <img src="./image/logo.png" alt="Shanmugha Sawmill Logo">
+            <span>SHANMUGHA SAWMILL</span>
+        </a>
         <nav>
             <a href="#about">About Us</a>
             <a href="#services">Services</a>
@@ -357,48 +407,37 @@ body::before {
             <div class="gallery-item">
                 <img src="./image/owner.jpeg" alt="owner photo">
             </div>
-            
             <div class="gallery-item">
-                <img src="./image/pillar2.jpeg" alt="owner photo">
+                <img src="./image/pillar2.jpeg" alt="pillar photo">
             </div>
             <div class="gallery-item">
-                <img src="./image/pillar3.jpeg" alt="owner photo">
+                <img src="./image/pillar3.jpeg" alt="pillar photo">
             </div>
         </div>
     </section>
 
     <!-- Video Showcase Section -->
     <section id="videos" class="section">
-        <h2 class="section-title">work video</h2>
+        <h2 class="section-title">Work Video</h2>
         <div class="video-container">
             <div class="video-wrapper">
-                <!-- Option A: For a local MP4 file saved in your image/video folder -->
                 <video controls poster="./image/photo1.jpg">
                     <source src="/video/work.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-
-                <!-- Option B: If your video is hosted on YouTube, replace the <video> tag above with this iframe:
-                <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
-                -->
             </div>
             <p style="margin-top: 1rem; color: #555;">Heavy log lifting and loading operation using our precision crane equipment.</p>
         </div>
     </section>
 
-    <section id="videos" class="section">
+    <section class="section">
         <h2 class="section-title">Crane Work In Action</h2>
         <div class="video-container">
             <div class="video-wrapper">
-                <!-- Option A: For a local MP4 file saved in your image/video folder -->
                 <video controls poster="./image/crane.jpg">
                     <source src="./video/crane.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-
-                <!-- Option B: If your video is hosted on YouTube, replace the <video> tag above with this iframe:
-                <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
-                -->
             </div>
             <p style="margin-top: 1rem; color: #555;">Heavy log lifting and loading operation using our precision crane equipment.</p>
         </div>
@@ -471,4 +510,4 @@ body::before {
     </footer>
 
 </body>
-</html> 
+</html>
